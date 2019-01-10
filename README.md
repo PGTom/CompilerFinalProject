@@ -42,7 +42,7 @@ bash compile_link.bat
 </code></pre>
 
 The content of these three file.bat:
--*compile_bison.bat*
+- *compile_bison.bat*
 <pre><code>#!/bin/bash
 
 read -p "File Name:" name
@@ -51,7 +51,7 @@ bison -d -o y.tab.c ${name}.y
 gcc -c -g -I.. y.tab.c
 </code></pre>
 
--*compile_flex.bat*
+- *compile_flex.bat*
 <pre><code>#!/bin/bash
 
 read -p "File Name:" name
@@ -60,7 +60,7 @@ flex -o lex.yy.c ${name}.l
 gcc -c -g -I.. lex.yy.c
 </code></pre>
 
--*compile_link.bat*
+- *compile_link.bat*
 <pre><code>#!/bin/bash
 
 read -p "File Name:" name
@@ -74,7 +74,7 @@ To ignore all warning Message, easily execute this command to compile all proces
 (enter filename)
 </code></pre>
 
--*compile_CompAndRun.bat*
+- *compile_CompAndRun.bat*
 <pre><code>#!/bin/bash
 
 read -p "File Name:" name
