@@ -1,6 +1,4 @@
 #!/bin/bash
 
-read -p "File Name:" name
-
-flex -o lex.yy.c ${name}.l
-gcc -c -g -I.. lex.yy.c
+flex -o final.yy.c final.l
+gcc -c -g -I.. final.yy.c
