@@ -39,16 +39,19 @@ bash compile_flex.bat
 bash compile_link.bat
 (enter filename)
 
-./filename<\code><\pre>
+./filename
+</code></pre>
 
 To ignore all warning Message, easily execute this command to compile all process and run in one time:
 
 <pre><code>
 bash compile_CompAndRun.bat
-(enter filename)<\code><\pre>
+(enter filename)
+</code></pre>
 
 ## Grammer Overview
-<pre><code>PROGRAM ::= STMT+
+<pre><code>
+PROGRAM ::= STMT+
 STMT         ::= EXP | DEF-STMT | PRINT-STMT
 PRINT-STMT   ::= (print-num EXP) | (print-bool EXP)
 EXP          ::= bool-val | number | VARIABLE | NUM-OP | LOGICAL-OP
@@ -79,5 +82,6 @@ FUN-EXP      ::= (lambda FUN_IDs FUN-BODY)
 IF-EXP       ::= (if TEST-EXP THAN-EXP ELSE-EXP)
     TEST-EXP ::= EXP
     THEN-EXP ::= EXP
-    ELSE-EXP ::= EXP</code></pre>
+    ELSE-EXP ::= EXP
+</code></pre>
 
