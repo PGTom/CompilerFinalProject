@@ -38,7 +38,7 @@ bash compile_flex.bat
 bash compile_link.bat
 (enter filename)
 
-./filename
+./filename ./test_data/test.lsp
 </code></pre>
 
 The content of these three file.bat:
@@ -76,8 +76,10 @@ To ignore all warning Message, easily execute this command to compile all proces
 
 - *compile_CompAndRun.bat*
 <pre><code>#!/bin/bash
+#!/bin/bash
 
 read -p "File Name:" name
+read -p "test.lsp:" lsp
 
 #copile bision
 bison -d -o y.tab.c ${name}.y 2> /dev/null
@@ -89,7 +91,7 @@ gcc -c -g -I.. lex.yy.c 2> /dev/null
 gcc -o ${name} y.tab.o lex.yy.o -ll 2> /dev/null
 
 #run
-./${name}
+./${name} ./test_data/${lsp}
 </code></pre>
 
 ## Grammer Overview
