@@ -42,11 +42,60 @@ bash compile_link.bat
 ./filename
 </code></pre>
 
+The content of these three file.bat:
+-*compile_bison.bat*
+<pre><code>
+#!/bin/bash
+
+read -p "File Name:" name
+
+bison -d -o y.tab.c ${name}.y
+gcc -c -g -I.. y.tab.c
+</code></pre>
+
+-*compile_flex.bat*
+<pre><code>
+#!/bin/bash
+
+read -p "File Name:" name
+
+flex -o lex.yy.c ${name}.l
+gcc -c -g -I.. lex.yy.c
+</code></pre>
+
+-*compile_link.bat*
+<pre><code>
+#!/bin/bash
+
+read -p "File Name:" name
+
+gcc -o ${name} y.tab.o lex.yy.o -ll
+</code></pre>
+
 To ignore all warning Message, easily execute this command to compile all process and run in one time:
 
 <pre><code>
 bash compile_CompAndRun.bat
 (enter filename)
+</code></pre>
+
+-*compile_CompAndRun.bat*
+<pre><code>
+#!/bin/bash
+
+read -p "File Name:" name
+
+#copile bision
+bison -d -o y.tab.c ${name}.y 2> /dev/null
+gcc -c -g -I.. y.tab.c 2> /dev/null
+#compile flex
+flex -o lex.yy.c ${name}.l 2> /dev/null
+gcc -c -g -I.. lex.yy.c 2> /dev/null
+#compile and link bison and flex
+gcc -o ${name} y.tab.o lex.yy.o -ll 2> /dev/null
+
+#run
+./${name}
 </code></pre>
 
 ## Grammer Overview
