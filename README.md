@@ -23,8 +23,8 @@ and a few operations.
 **Type Definition**
 
 - Boolean: Boolean type includes two values, #t for true and #f for false.
-- Number: Signed integer from −(2^31 ) to 2^31 – 1, behavior out of this ran$
-- Function:See the label *Grammer Overview*.
+- Number: Signed integer from −(2^31 ) to 2^31 – 1, behavior out of this range is not defined.
+- Function: See the label *Grammer Overview*.
 
 ## How to Run
 Execute these command in sequence, if you want to check if there is any warning Message
