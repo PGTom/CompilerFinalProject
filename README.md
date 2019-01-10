@@ -43,7 +43,7 @@ bash compile_link.bat
 
 The content of these three file.bat:
 -*compile_bison.bat*
-<pre><code#!/bin/bash
+<pre><code>#!/bin/bash
 
 read -p "File Name:" name
 
@@ -52,7 +52,7 @@ gcc -c -g -I.. y.tab.c
 </code></pre>
 
 -*compile_flex.bat*
-<pre><code#!/bin/bash
+<pre><code>#!/bin/bash
 
 read -p "File Name:" name
 
@@ -61,7 +61,7 @@ gcc -c -g -I.. lex.yy.c
 </code></pre>
 
 -*compile_link.bat*
-<pre><code#!/bin/bash
+<pre><code>#!/bin/bash
 
 read -p "File Name:" name
 
