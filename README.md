@@ -29,73 +29,67 @@ and a few operations.
 ## How to Run
 Execute these command in sequence, if you want to check if there is any warning Message
 
-<pre><code>bash compile_bison.bat
-(enter filename)
+<pre><code>
+bash compile_bison.bat
 
 bash compile_flex.bat
-(enter filename)
 
 bash compile_link.bat
-(enter filename)
 
-./filename ./test_data/test.lsp
+./lispFile < ./test_data/toTest.lsp
 </code></pre>
 
 The content of these three file.bat:
 - *compile_bison.bat*
-<pre><code>#!/bin/bash
+<pre><code>
+#!/bin/bash
 
-read -p "File Name:" name
-
-bison -d -o y.tab.c ${name}.y
-gcc -c -g -I.. y.tab.c
+bison -d -o final.tab.c final.y
+gcc -c -g -I.. final.tab.c
 </code></pre>
 
 - *compile_flex.bat*
-<pre><code>#!/bin/bash
+<pre><code>
+#!/bin/bash
 
-read -p "File Name:" name
-
-flex -o lex.yy.c ${name}.l
-gcc -c -g -I.. lex.yy.c
+flex -o final.yy.c final.l
+gcc -c -g -I.. final.yy.c
 </code></pre>
 
 - *compile_link.bat*
-<pre><code>#!/bin/bash
+<pre><code>
+#!/bin/bash
 
-read -p "File Name:" name
-
-gcc -o ${name} y.tab.o lex.yy.o -ll
+gcc -o lispFile final.tab.o final.yy.o -ll
 </code></pre>
 
 To ignore all warning Message, easily execute this command to compile all process and run in one time:
 
-<pre><code>bash compile_CompAndRun.bat
-(enter filename)
+<pre><code>
+bash compile_CompAndRun.bat
+
+./lispFile < ./test_data/toTest.lsp
 </code></pre>
 
 - *compile_CompAndRun.bat*
-<pre><code>#!/bin/bash
+<pre><code>
 #!/bin/bash
 
-read -p "File Name:" name
-read -p "test.lsp:" lsp
-
 #copile bision
-bison -d -o y.tab.c ${name}.y 2> /dev/null
-gcc -c -g -I.. y.tab.c 2> /dev/null
+bison -d -o final.tab.c final.y 2> /dev/null
+gcc -c -g -I.. final.tab.c 2> /dev/null
 #compile flex
-flex -o lex.yy.c ${name}.l 2> /dev/null
-gcc -c -g -I.. lex.yy.c 2> /dev/null
+flex -o final.yy.c final.l 2> /dev/null
+gcc -c -g -I.. final.yy.c 2> /dev/null
 #compile and link bison and flex
-gcc -o ${name} y.tab.o lex.yy.o -ll 2> /dev/null
+gcc -o lispFile final.tab.o final.yy.o -ll 2> /dev/null
 
-#run
-./${name} ./test_data/${lsp}
+#2> /dev/null : to ignore all warning msg
 </code></pre>
 
 ## Grammer Overview
-<pre><code>PROGRAM ::= STMT+
+<pre><code>
+PROGRAM      ::= STMT+
 STMT         ::= EXP | DEF-STMT | PRINT-STMT
 PRINT-STMT   ::= (print-num EXP) | (print-bool EXP)
 EXP          ::= bool-val | number | VARIABLE | NUM-OP | LOGICAL-OP
