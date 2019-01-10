@@ -29,8 +29,7 @@ and a few operations.
 ## How to Run
 Execute these command in sequence, if you want to check if there is any warning Message
 
-<pre><code>
-bash compile_bison.bat
+<pre><code>bash compile_bison.bat
 
 bash compile_flex.bat
 
@@ -41,39 +40,34 @@ bash compile_link.bat
 
 The content of these three file.bat:
 - *compile_bison.bat*
-<pre><code>
-#!/bin/bash
+<pre><code>#!/bin/bash
 
 bison -d -o final.tab.c final.y
 gcc -c -g -I.. final.tab.c
 </code></pre>
 
 - *compile_flex.bat*
-<pre><code>
-#!/bin/bash
+<pre><code>#!/bin/bash
 
 flex -o final.yy.c final.l
 gcc -c -g -I.. final.yy.c
 </code></pre>
 
 - *compile_link.bat*
-<pre><code>
-#!/bin/bash
+<pre><code>#!/bin/bash
 
 gcc -o lispFile final.tab.o final.yy.o -ll
 </code></pre>
 
 To ignore all warning Message, easily execute this command to compile all process and run in one time:
 
-<pre><code>
-bash compile_CompAndRun.bat
+<pre><code>bash compile_CompAndRun.bat
 
 ./lispFile < ./test_data/toTest.lsp
 </code></pre>
 
 - *compile_CompAndRun.bat*
-<pre><code>
-#!/bin/bash
+<pre><code>#!/bin/bash
 
 #copile bision
 bison -d -o final.tab.c final.y 2> /dev/null
@@ -88,8 +82,7 @@ gcc -o lispFile final.tab.o final.yy.o -ll 2> /dev/null
 </code></pre>
 
 ## Grammer Overview
-<pre><code>
-PROGRAM      ::= STMT+
+<pre><code>PROGRAM      ::= STMT+
 STMT         ::= EXP | DEF-STMT | PRINT-STMT
 PRINT-STMT   ::= (print-num EXP) | (print-bool EXP)
 EXP          ::= bool-val | number | VARIABLE | NUM-OP | LOGICAL-OP
