@@ -6,12 +6,12 @@
 separator [\t|\n|\r|" "]
 letter    [a-z]
 digit     [0-9]
-number    0|[1-9]{digit}*|-[1-9]{digit}*
+number    0|[1-9]{digit}*|\-[1-9]{digit}*
 id        {letter}({letter}|{digit}|\-)*
 bool-val  #t|#f
 %%
 {separator}  { ; }
-{number}     { return(number); }
+{number}     { yylval.ival=atoi(yytext); return(number); }
 {bool-val}   {
                if(strcmp(yytext,"#t")==0)
                    yylval.ival=1;
